@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://kit.fontawesome.com/f4325ac870.js" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap">
     <link rel="stylesheet" href="./page.css/biglietto.css">
-    <title>Document</title>
+    <title>Biglietti treni</title>
 </head>
 <body>
     <form id="form" action="#" class="form" >
@@ -18,11 +18,17 @@
         <input type="number" class="form-input" id="km"name="km">
         <label for="" class="form-label">Distanza da percorrere</label>
 
-        <input type="text" class="form-input">
-        <label for="" class="form-label"id="messaggio">Messagio</label>
-        <input type="submit" class="form-submit">
+        <div id="messaggio" class="messaggio">
+           <h2>Prezzo del tuo biglietto:</h2>
+            
+        </div> 
+
+        <button class="btnCalcola form-submit"  id="Calculate">Calcola</button>
+        <button class="btnCancella form-submit"  id="Cancel">Cancella</button>
+
 
     </form>
+   
     <script type="text/javascript" src="/script.js"></script>
 </body>
 </html>
