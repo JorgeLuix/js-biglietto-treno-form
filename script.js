@@ -2,8 +2,8 @@
 
 /*COSTANTI*/
 const formulario = document.getElementById('form');
-const KmTravelled = form.querySelector('input[name ="km"]');
-const AgeUtente = form.querySelector('input[name = "age"]');
+const KmTravelled = contenuto.querySelector('input[name ="km"]');
+const AgeUtente = contenuto.querySelector('input[name = "age"]');
 
 
 const btnCalcola = document.getElementById('Calculate');
@@ -37,13 +37,13 @@ btnCalcola.addEventListener('click', function(){
        messaggio.innerHTML +=`<h2>${TotalTicketPrice} &euro;</h2>`;
     }
     
-    messaggio.style.color = 'green';
 
 
 });
 btnCancella.addEventListener('click', function(){
     AgeUtente.value= 0;
     KmTravelled.value = 0;
+    messaggio.value = 0;
 });
 
 let inputs = document.getElementsByClassName('form-input');
