@@ -1,21 +1,9 @@
 /*VARIABILI*/
 
 /*COSTANTI*/
-const form = document.getElementById('form');
-
+const formulario = document.getElementById('form');
 const KmTravelled = form.querySelector('input[name ="km"]');
-const AgeUtente = form.querySelector('input[name = "età"]');
-
-
-let KmPrice = 0.21;
-let TotalTicketPrice = (KmTravelled * KmPrice);
-
-/*VARIABILI SCONTI */
-let AdultDiscount = 0.40;
-let MinorDiscount = 0.20;
-
-/*MESSAGGIO*/
-/*let messaggio = 'Prezzo del biglietto è: ';*/
+const AgeUtente = form.querySelector('input[name = "age"]');
 
 
 const btnCalcola = document.getElementById('Calculate');
@@ -26,25 +14,32 @@ const messaggio = document.querySelector('.messaggio');
 /*CONDIZIONALI*/
 
 btnCalcola.addEventListener('click', function(){
-    let età = AgeUtente.value;
+    let AgeUser = AgeUtente.value;
     let km = KmTravelled.value;
     let KmPrice = 0.21;
-    let TotalTicketPrice = km * KmPrice;
-    messaggio.innerHTML +=`<h2>${TotalTicketPrice} &euro;</h2>`;
+    let TotalTicketPrice = (km * KmPrice).toFixed(2);
+    let DiscountUnder = ((TotalTicketPrice) * 0.20).toFixed(2);
+    let DiscountSenior = ((TotalTicketPrice) * 0.40).toFixed(2); 
+    let priceDiscountUnder = ((TotalTicketPrice) - DiscountUnder).toFixed(2);
+    let priceDiscountSenior = ((TotalTicketPrice) - DiscountSenior).toFixed(2);
+
+    
+   if(AgeUser < 18) {
+    TotalTicketPrice = priceDiscountUnder;
+    messaggio.innerHTML +=`<h2>${priceDiscountUnder} &euro;</h2>`;
+    }
+    if(AgeUser > 65) {
+        TotalTicketPrice = priceDiscountSenior;
+        messaggio.innerHTML +=`<h2>${priceDiscountSenior} &euro;</h2>`;
+    }
+    else if ((AgeUser >= 18) && (AgeUser <= 65)) {
+       TotalTicketPrice;
+       messaggio.innerHTML +=`<h2>${TotalTicketPrice} &euro;</h2>`;
+    }
+    
     messaggio.style.color = 'green';
 
-    let AdultDiscount = 0.40;
-    let MinorDiscount = 0.20;
 
-    if(AgeUtente < 18) {
-        messaggio += (TotalTicketPrice - MinorDiscount).toFixed(2) +' &euro;';
-    }
-    if(AgeUtente > 65) {
-        messaggio+= (TotalTicketPrice - AdultDiscount).toFixed(2) +' &euro;';
-    }
-    else if ((AgeUtente >18) && (AgeUtente < 65)) {
-        messaggio += (TotalTicketPrice).toFixed(2) +' &euro;';
-    }
 });
 btnCancella.addEventListener('click', function(){
     AgeUtente.value= 0;
