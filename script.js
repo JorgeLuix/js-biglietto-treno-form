@@ -1,4 +1,6 @@
 /*VARIABILI*/
+const myform = document.querySelector('form');
+
 
 /*COSTANTI*/
 const formulario = document.getElementById('form');
@@ -13,7 +15,8 @@ const messaggio = document.querySelector('.messaggio');
 
 /*CONDIZIONALI*/
 
-btnCalcola.addEventListener('click', function(){
+btnCalcola.addEventListener('click', function(event){
+    event.preventDefault()
     let AgeUser = AgeUtente.value;
     let km = KmTravelled.value;
     let KmPrice = 0.21;
@@ -41,13 +44,13 @@ btnCalcola.addEventListener('click', function(){
 
 });
 btnCancella.addEventListener('click', function(){
-    AgeUtente.value= 0;
-    KmTravelled.value = 0;
-    messaggio.value = 0;
+    AgeUtente.value= '';
+    KmTravelled.value = '';
+    
 });
 
 let inputs = document.getElementsByClassName('form-input');
-for (var i =0; i< inputs.length; i++) {
+for (let i =0; i< inputs.length; i++) {
     inputs[i].addEventListener('keyup', function(){
         if(this.value.length>=1) {
             this.nextElementSibling.classList.add('fisso');
